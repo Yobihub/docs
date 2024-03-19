@@ -32,6 +32,7 @@
     --sl-color-gray-6: var(--colour-hover);
     --sl-color-black: var(--colour);
     --hover-bg: var(--bg-transparent);
+    --showbg: var(--colour);
 }
 
 /* Light mode colors. */
@@ -49,6 +50,17 @@
     --sl-color-gray-7: var(--bg-transparent);
     --sl-color-black: var(--bg);
     --hover-bg: var(--colour-hover);
+    --showbg: var(--bg);
+}
+
+::selection {
+    background-color: var(--bg);
+    color: var(--colour);
+}
+
+[data-theme='light'] ::selection {
+    background-color: var(--colour);
+    color: var(--bg);
 }
 
 main {
@@ -68,10 +80,6 @@ h2 {
     font-style: italic;
 }
 
-.action.primary:hover {
-    background-color: var(--hover-bg);
-}
-
 a {
     transition: var(--transition);
 }
@@ -82,4 +90,34 @@ a:active {
 
 header {
     backdrop-filter: blur(30px);
+}
+
+nav {
+    background-color: var(--showbg);
+}
+
+.action.primary {
+    transition: var(--transition);
+    color: var(--colour) !important;
+}
+
+.action.primary:hover {
+    opacity: .8;
+}
+
+.action.primary:active {
+    background-color: var(--hover-bg);
+}
+
+a:active svg {
+    transform: scale(.8);
+}
+
+.starlight-image-zoom-dialog {
+    background-color: var(--showbg);
+}
+
+
+.site-title:hover {
+    rotate: 20deg;
 }

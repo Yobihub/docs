@@ -1,31 +1,43 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightImageZoom from 'starlight-image-zoom'
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Docs',
+			plugins: [starlightImageZoom()],
+			title: 'SG-News Docs',
 			logo: {
 				src: './src/assets/logo.png',
+				replacesTitle: true,
 			},
 			social: {
-				github: 'https://github.com/sgnews/docs',
+				github: 'https://github.com/sgnews',
+			},
+			editLink: {
+				baseUrl: 'https://github.com/sgnews/docs/tree/master/',
 			},
 			sidebar: [
+				{ label: 'Overview', link: '/overview' },
 				{
-					label: 'Guides',
+					label: 'Account',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', link: '/guides/example/' },
+						{ label: 'Registrierung', link: '/account/registration' },
+						{ label: 'E-Mail', link: '/account/mail' },
+						{ label: 'Passwort', link: '/account/password' },
 					],
 				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
+				/* {
+					label: 'Dashboard',
+					items: [
+						// Each item here is one entry in the navigation menu.
+						{ label: 'Overview', link: '/dashboard/overview' },
+					],
+				},*/
 			],
-			disable404Route: true,
+			// disable404Route: true,
 			customCss: [
 				// Relative path to your custom CSS file
 				'./src/styles/custom.css',
