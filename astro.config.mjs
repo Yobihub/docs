@@ -5,9 +5,12 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'SG-News Docs',
+			title: 'Docs',
+			logo: {
+				src: './src/assets/logo.png',
+			},
 			social: {
-				github: 'https://github.com/sgnews/',
+				github: 'https://github.com/sgnews/docs',
 			},
 			sidebar: [
 				{
@@ -21,6 +24,11 @@ export default defineConfig({
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
 				},
+			],
+			disable404Route: true,
+			customCss: [
+				// Relative path to your custom CSS file
+				'./src/styles/custom.css',
 			],
 		}),
 	],
